@@ -63,8 +63,21 @@ group by
 	"Undergrad Degree" ,
 	Status
 
-
-
+--	total student who got more gpa in MBA then "Undergrad Degree" and Their placement status 
+SELECT
+	"Undergrad Degree" ,
+	COUNT(*) as total_student ,
+	Status
+FROM
+	Maven_Business_School mbs
+WHERE
+	"MBA Grade" > "Undergrad Grade"
+GROUP BY
+	1
+HAVING
+	Status = "Placed" or Status = 'Not Placed'
+ORDER BY
+	2 DESC 
 
 
 
