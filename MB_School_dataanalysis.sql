@@ -15,7 +15,7 @@ group by
 ORDER BY
 	2 DESC
 	
---highest offered degree which have most job "Work Experience" 
+--Highest offered degree which have most job "Work Experience" 
 SELECT
 	"Undergrad Degree",
 	COUNT(*) as Total_student
@@ -80,6 +80,34 @@ ORDER BY
 	2 DESC 
 
 
-
-
-
+--total student job placement with and without job experience
+SELECT
+	"Undergrad Degree" ,
+	COUNT(*) as total,
+	Status,
+	"Work Experience"
+FROM
+	Maven_Business_School mbs
+WHERE
+	"Work Experience" = 'No'
+	and Status = 'Placed'
+	or "Work Experience" = 'Yes'
+	and Status = 'Not Placed'
+GROUP BY
+	1,
+	3
+ORDER BY
+	2 DESC
+	
+-- effect on employeblity
+SELECT "Undergrad Degree",
+	COUNT(*) as Total_student
+from
+	Maven_Business_School mbs
+WHERE
+	"Employability (Before)" > "Employability (After)"
+GROUP BY
+	1
+	ORDER BY 2 DESC 
+	
+	
